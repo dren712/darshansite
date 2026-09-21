@@ -25,7 +25,7 @@ const proofPoints: ProofPoint[] = [
     id: "copyrights",
     metric: "2×",
     label: "Govt. of India Copyrights",
-    context: "Statutory IP Registrations",
+    context: "Government of India Copyrights",
     detail: "Registered IP for HPURN (AI video dehazing neural network) and Automated Food Dehydrator embedded control system.",
     verification: "Copyright Office, Govt. of India",
   },
@@ -44,14 +44,6 @@ const proofPoints: ProofPoint[] = [
     context: "Developer Cohort",
     detail: "Hands-on instruction in Anchor framework, Rust smart contracts, Program Derived Addresses (PDAs), and on-chain account security.",
     verification: "Fall 2026 Cohort",
-  },
-  {
-    id: "tests",
-    metric: "304+",
-    label: "Verified Protocol Tests",
-    context: "PROVN & FORGE CI",
-    detail: "294 air-gapped cryptographic tests for Ed25519 signatures, challenge expirations, sliding window replay guards, and live devnet pipelines.",
-    verification: "Deterministic CI Test Suites",
   },
 ];
 
@@ -73,8 +65,8 @@ export const CredibilityStrip: React.FC = () => {
           </span>
         </div>
 
-        {/* 5-Column Proof Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        {/* 4-Column Proof Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {proofPoints.map((item) => {
             const isOpen = activeId === item.id;
             return (

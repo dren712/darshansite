@@ -5,7 +5,7 @@ import { careerPhases, humanNarrative } from "@/content/about";
 import { ChevronRight } from "lucide-react";
 
 export const AboutSection: React.FC = () => {
-  const [activePhase, setActivePhase] = useState<number>(4); // default to Phase 5: AI-Native
+  const [activePhase, setActivePhase] = useState<number>(0); // default to Phase 1: Hardware
 
   return (
     <section id="about" className="py-20 border-b border-paper-border bg-paper">
@@ -43,8 +43,8 @@ export const AboutSection: React.FC = () => {
             <div className="text-ink font-semibold">
               {humanNarrative.axiom}
             </div>
-            <div className="text-[11px] text-ink-secondary leading-relaxed pt-2 border-t border-paper-line">
-              {humanNarrative.distinction}
+            <div className="text-[11px] text-ink-secondary leading-relaxed pt-2 border-t border-paper-line font-serif italic">
+              &ldquo;I don&apos;t need to know everything before I start building. I need to know how to figure things out.&rdquo;
             </div>
           </div>
         </div>

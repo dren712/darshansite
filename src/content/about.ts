@@ -28,8 +28,6 @@ export const humanNarrative = {
   ],
   axiom: "Architecture > Systems > Optimization >> Code",
   distinction: "AI accelerates implementation. It does not replace understanding.",
-  howAIFits:
-    "I use AI heavily. Claude, Antigravity, Gemini, and technical documentation are part of my daily development environment. I don't view that as 'AI writing code for me' — I view it as an extremely fast implementation layer. I still need to know what system I want, what constraints matter, what to verify, and when an AI-generated implementation is wrong.",
 };
 
 export const careerPhases: TimelineAct[] = [

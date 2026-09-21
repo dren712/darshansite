@@ -51,7 +51,7 @@ export const ContactSection: React.FC = () => {
             </h2>
 
             <p className="text-base text-ink-secondary leading-relaxed font-sans max-w-xl">
-              I focus on autonomous AI agent coordination, cryptographic proof systems, Solana runtime primitives, and living-world architectures. Open for high-conviction engineering roles, research fellowships, or co-founder discussions.
+              I focus on autonomous AI agent coordination, cryptographic proof systems, Solana runtime primitives, and living-world architectures. Open to interesting engineering problems, collaborations, and remote Web3 / AI infrastructure roles.
             </p>
 
             {/* Direct Contact Cards (Email & Phone) */}
