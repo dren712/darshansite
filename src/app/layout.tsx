@@ -9,17 +9,18 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://darshangaikwad.dev"),
+  metadataBase: new URL("https://darshangaikwad.online"),
   title: {
-    default: "Darshan Gaikwad · Systems Thinker & Infrastructure Builder",
+    default: "Darshan Gaikwad · AI-Native Systems Thinker & Builder",
     template: "%s · Darshan Gaikwad",
   },
   description:
-    "Systems thinker building infrastructure for the AI-native internet. Working across cryptography, Solana primitives, and autonomous agents.",
+    "AI-native systems thinker and builder. Working across cryptography, Solana primitives, and autonomous agents.",
   keywords: [
     "Darshan Gaikwad",
     "Systems Thinker",
-    "Systems Engineer",
+    "AI-Native Builder",
+    "Technical Orchestrator",
     "Solana",
     "Autonomous Agents",
     "Cryptographic Infrastructure",
@@ -34,10 +35,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://darshangaikwad.dev",
-    title: "Darshan Gaikwad · Systems Thinker & Infrastructure Builder",
+    url: "https://darshangaikwad.online",
+    title: "Darshan Gaikwad · AI-Native Systems Thinker & Builder",
     description:
-      "Architecture > Systems > Optimization >> Code. Systems thinker building infrastructure for the AI-native internet.",
+      "Architecture > Systems > Optimization >> Code. AI-native systems thinker building infrastructure for the AI-native internet.",
     siteName: "Darshan Gaikwad",
   },
   twitter: {
