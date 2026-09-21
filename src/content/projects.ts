@@ -66,7 +66,7 @@ export const projectsHierarchy = {
       theQuestion:
         "Developer work and agent executions are scattered across PRs, private tools, and fragile platforms. Resumes can be fabricated or deleted. Can we turn contributions into immutable, self-sovereign evidence envelopes signed with a keypair?",
       whatIHadToLearn:
-        "I didn't start as an expert in Solana. I went deep into Solana documentation, Anchor specifications, Ed25519 signature mechanics, Arweave transaction tagging, and Row-Level Security in Postgres. AI tools accelerated the implementation while I focused on the cryptographic boundaries, threat model, and verification gates.",
+        "Solana account structures, Anchor specifications, Ed25519 signature mechanics, Arweave transaction tagging via Irys, Row-Level Security in Postgres, and threat modeling for anti-replay verification gates.",
       howTheSystemWorked:
         "Users or agents sign canonical JSON work envelopes with Ed25519 keypairs. An API gateway enforces a ±15-minute anti-replay sliding window. Evidence envelopes are permanently archived to Arweave via Irys, and immutable commitments are anchored to deterministic Solana PDAs [b'proof', authority, proof_id].",
       whatActuallyShipped:
@@ -131,7 +131,7 @@ export const projectsHierarchy = {
       theQuestion:
         "When an investor delegates portfolio management to an autonomous agent, authorization alone is not enough. The agent can be allowed to trade. But what guarantees that the resulting financial state still satisfies the investor's rules? Sentinel explores a stricter model: The agent can decide. The protocol decides whether the resulting state is allowed to settle.",
       whatIHadToLearn:
-        "Anchor program architecture, Solana account and state modeling, on-chain policy enforcement, financial invariant checks, fixed-point financial math, Pyth price feed consumption, Meteora DBC execution adapters, autonomous agent loop orchestration, and PROVN evidence commitments. Another unfamiliar domain encountered, researched, decomposed, and assembled into a functioning prototype.",
+        "Anchor program architecture, Solana account and state modeling, on-chain policy enforcement, financial invariant checks, fixed-point financial math, Pyth price feed consumption, Meteora DBC execution adapters, autonomous agent loop orchestration, and PROVN evidence commitments.",
       howTheSystemWorked:
         "The agent proposes a trade. Sentinel evaluates whether the resulting financial state violates defined constraints: maximum single-asset exposure, minimum stablecoin reserve, maximum trade size, slippage bounds, and pre-IPO allocation ceilings. The Anchor program's `execute_guarded_trade` instruction is the authoritative enforcement boundary: if compliant, it settles; if non-compliant, it atomically reverts. All executions generate PROVN cryptographic evidence envelopes.",
       whatActuallyShipped:
@@ -201,7 +201,7 @@ export const projectsHierarchy = {
       howTheSystemWorked:
         "The Raspberry Pi acted as a physical host running a customized Linux OS. Docker containerized independent microservices and storage daemons. An ngrok tunnel provided secure, encrypted remote access from outside the local network without exposing raw router ports.",
       whatActuallyShipped:
-        "A continuously operating physical home server providing personal file storage, remote media streaming, and isolated service containers accessible from any device over the internet. Demonstrates infrastructure thinking before Web3.",
+        "A continuously operating physical home server providing personal file storage, remote media streaming, and isolated service containers accessible from any device over the internet.",
       stack: ["Raspberry Pi", "Linux (Debian)", "Docker", "Docker Compose", "ngrok", "Networking", "Bash"],
       flowTitle: "PRIVATE CLOUD TOPOLOGY",
       flowSteps: [
@@ -243,7 +243,6 @@ export const projectsHierarchy = {
       ],
       technicalHighlights: [
         "A student looked at cloud infrastructure and decided to build a tiny version of it himself",
-        "Demonstrated infrastructure and microservices thinking well before entering Web3",
         "Hands-on mastery of Linux permissions, ARM architectures, and networking protocols",
         "Operated as a functional personal daily driver for remote file synchronization",
       ],
@@ -260,7 +259,7 @@ export const projectsHierarchy = {
       theQuestion:
         "Single-image dehazing methods flicker and fail when applied to continuous video streams. How do we preserve temporal consistency across frames while removing non-uniform haze?",
       whatIHadToLearn:
-        "Reading academic computer vision papers, atmospheric scattering models, Dark Channel Prior mathematics, ConvLSTM recurrent spatiotemporal architectures, and adversarial loss formulations in CycleGAN. An early example of learning unfamiliar techniques, combining them into a system, and turning it into research.",
+        "Atmospheric scattering models, Dark Channel Prior mathematics, ConvLSTM recurrent spatiotemporal architectures, and adversarial loss formulations in CycleGAN.",
       howTheSystemWorked:
         "Combined a physics-based Dark Channel Prior (DCP) with an AOD-Net transmission estimator, passed recurrent features through ConvLSTM to enforce inter-frame smoothness, and refined visual quality using CycleGAN unpaired adversarial translation.",
       whatActuallyShipped:
@@ -306,7 +305,7 @@ export const projectsHierarchy = {
         },
       ],
       technicalHighlights: [
-        "Govt. of India Copyright registered for novel video dehazing neural architecture",
+        "Government of India Copyright registered for video dehazing architecture",
         "Academic paper accepted with minor revisions at ICAIMEST",
         "Combined classical physics-based optics (DCP) with modern deep recurrent networks",
         "Rigorous empirical evaluation against standard computer vision benchmarks (RESIDE-6k)",

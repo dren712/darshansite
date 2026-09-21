@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px]">
-          <div>&copy; {new Date().getFullYear()} Darshan Gaikwad. MIT License.</div>
+          <div>&copy; {new Date().getFullYear()} Darshan Gaikwad</div>
           <div className="text-ink-muted">ᛞᚨᚱᛋᚺᚨᚾ · दर्शन · DARSHAN</div>
         </div>
       </div>

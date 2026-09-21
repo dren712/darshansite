@@ -15,7 +15,7 @@ export const NowSection: React.FC = () => {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-nordic-red"></span>
               </span>
               <span className="font-mono text-xs uppercase tracking-wider text-ink font-bold">
-                CURRENT OCCUPATION // NOW
+                NOW
               </span>
             </div>
             <span className="font-mono text-xs text-ink-muted">

@@ -41,7 +41,7 @@ export const ContactSection: React.FC = () => {
             <div className="flex items-center gap-2 font-mono text-xs text-ink-muted">
               <span className="w-1.5 h-1.5 rounded-full bg-nordic-red"></span>
               <span className="font-semibold uppercase tracking-wider text-ink text-[11px]">
-                INITIATE DIALOGUE
+                GET IN TOUCH
               </span>
             </div>
 

@@ -75,11 +75,11 @@ export const careerPhases: TimelineAct[] = [
     actNumber: "05",
     phase: "PHASE 5",
     title: "AI-Native Engineering",
-    subtitle: "Orchestrating AI Tools & Documentation",
+    subtitle: "The Implementation Multiplier",
     summary:
       "AI became an implementation multiplier: documentation, decomposition, orchestration, and verification.",
-    focus: "System decomposition, technical orchestration, rapid verification",
-    technologies: ["Claude", "Google Antigravity", "Gemini", "Technical Specs", "AI Workflows"],
+    focus: "Accelerated prototyping, documentation-driven decomposition",
+    technologies: ["Claude", "Google Antigravity", "Gemini", "Technical Documentation"],
   },
   {
     actNumber: "06",
