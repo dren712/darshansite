@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useState } from "react";
-import { projectsHierarchy, FlagshipProject } from "@/content/projects";
+import { projectsHierarchy, progressionBridge, FlagshipProject } from "@/content/projects";
 import { ArchitectureDiagram } from "@/components/ArchitectureDiagram";
 import { Github, ArrowUpRight, Check, ChevronDown } from "lucide-react";
 
 export const FeaturedWork: React.FC = () => {
   const [expandedDiagrams, setExpandedDiagrams] = useState<Record<string, boolean>>({
     provn: true,
-    "raspberry-pi-nas": true,
-    hpurn: true,
+    "sentinel-finance": true,
+    "raspberry-pi-nas": false,
+    hpurn: false,
     forge: false,
     "agent-verification": false,
     "civilization-engine": false,
@@ -32,8 +33,10 @@ export const FeaturedWork: React.FC = () => {
           <div className="flex items-center gap-3">
             <span
               className={`px-2 py-0.5 rounded-sm font-bold text-[10px] ${
-                project.tier === "BUILT"
+                project.tier === "BUILT_CURRENT"
                   ? "bg-ink text-paper"
+                  : project.tier === "BUILT_FOUNDATIONS"
+                  ? "bg-paper-subtle text-ink border border-paper-border"
                   : project.tier === "EXPERIMENTED"
                   ? "bg-paper text-ink border border-paper-border"
                   : project.tier === "BUILDING"
@@ -204,31 +207,86 @@ export const FeaturedWork: React.FC = () => {
             The evolution of the thinking.
           </h2>
           <p className="text-base text-ink-secondary leading-relaxed font-sans">
-            Hardware → Machine Learning → Self-Hosted Cloud → Web3 &amp; Solana → AI Agents → Future Systems.
+            Hardware → Machine Learning → Infrastructure → Web3 &amp; Solana → Autonomous Systems → Future Worlds.
             A transparent chronicle of what was built, what was learned, and what shipped.
           </p>
         </div>
 
-        {/* ------------------------------------------------------------- */}
-        {/* 1. TIER: BUILT                                                */}
-        {/* ------------------------------------------------------------- */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">
-            <span className="font-bold text-ink uppercase tracking-wider text-sm">
-              [ BUILT ]
+        {/* Progression Bridge Banner */}
+        <div className="p-6 sm:p-7 rounded-sm border border-paper-border bg-paper-surface space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-paper-line pb-3 font-mono text-xs">
+            <span className="text-nordic-red font-semibold uppercase tracking-wider text-[11px]">
+              NARRATIVE PROGRESSION // VERIFIABLE EXECUTION
             </span>
-            <span className="text-ink-muted text-[11px]">
-              Fully functional, deployed protocols, physical systems, and peer-reviewed research
+            <span className="text-ink-muted text-[10px]">
+              Human Work → Guarded Action → Autonomous Audit
             </span>
           </div>
 
-          <div className="space-y-8">
-            {projectsHierarchy.built.map(renderProjectCard)}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 font-sans">
+            {progressionBridge.map((item) => (
+              <div
+                key={item.step}
+                className="p-4 rounded-sm border border-paper-border bg-paper space-y-2 flex flex-col justify-between"
+              >
+                <div className="space-y-1.5">
+                  <div className="flex items-center justify-between font-mono text-xs">
+                    <span className="font-bold text-nordic-red">{item.step}</span>
+                    <span className="text-[10px] text-ink-muted uppercase">{item.subtitle}</span>
+                  </div>
+                  <h4 className="font-bold text-ink text-sm sm:text-base font-sans">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-ink-secondary leading-relaxed font-serif italic">
+                    &ldquo;{item.question}&rdquo;
+                  </p>
+                </div>
+                <div className="pt-2 border-t border-paper-line font-mono text-[10px] text-ink-muted">
+                  {item.flow}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* ------------------------------------------------------------- */}
-        {/* 2. TIER: EXPERIMENTED                                         */}
+        {/* 1. TIER: BUILT · CURRENT                                      */}
+        {/* ------------------------------------------------------------- */}
+        <div className="space-y-6">
+          <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">
+            <span className="font-bold text-ink uppercase tracking-wider text-sm">
+              [ BUILT · CURRENT ]
+            </span>
+            <span className="text-ink-muted text-[11px]">
+              Active flagship systems on Solana Devnet &amp; permanent storage · Code, proofs, and verified invariants
+            </span>
+          </div>
+
+          <div className="space-y-8">
+            {projectsHierarchy.builtCurrent.map(renderProjectCard)}
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* 2. TIER: BUILT · FOUNDATIONS                                  */}
+        {/* ------------------------------------------------------------- */}
+        <div className="space-y-6 pt-6">
+          <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">
+            <span className="font-bold text-ink uppercase tracking-wider text-sm">
+              [ BUILT · FOUNDATIONS ]
+            </span>
+            <span className="text-ink-muted text-[11px]">
+              Physical single-board infrastructure and peer-reviewed machine learning research
+            </span>
+          </div>
+
+          <div className="space-y-8">
+            {projectsHierarchy.builtFoundations.map(renderProjectCard)}
+          </div>
+        </div>
+
+        {/* ------------------------------------------------------------- */}
+        {/* 3. TIER: EXPERIMENTED                                         */}
         {/* ------------------------------------------------------------- */}
         <div className="space-y-6 pt-6">
           <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">
@@ -246,7 +304,7 @@ export const FeaturedWork: React.FC = () => {
         </div>
 
         {/* ------------------------------------------------------------- */}
-        {/* 3. TIER: BUILDING / EXPLORING                                 */}
+        {/* 4. TIER: BUILDING / EXPLORING                                 */}
         {/* ------------------------------------------------------------- */}
         <div className="space-y-6 pt-6">
           <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">
@@ -264,7 +322,7 @@ export const FeaturedWork: React.FC = () => {
         </div>
 
         {/* ------------------------------------------------------------- */}
-        {/* 4. TIER: LONG-TERM INTELLECTUAL THESIS                        */}
+        {/* 5. TIER: LONG-TERM INTELLECTUAL THESIS                        */}
         {/* ------------------------------------------------------------- */}
         <div className="space-y-6 pt-6">
           <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">

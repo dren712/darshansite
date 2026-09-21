@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { careerPhases, humanNarrative } from "@/content/about";
-import { ChevronRight, Sparkles } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 export const AboutSection: React.FC = () => {
   const [activePhase, setActivePhase] = useState<number>(4); // default to Phase 5: AI-Native
@@ -127,17 +127,6 @@ export const AboutSection: React.FC = () => {
               )}
             </div>
           </div>
-        </div>
-
-        {/* AI Transparency Callout */}
-        <div className="p-6 sm:p-8 rounded-sm border border-paper-border bg-paper-surface space-y-3 font-sans">
-          <div className="flex items-center gap-2 font-mono text-xs text-nordic-red font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-nordic-red" />
-            <span>HOW AI FITS INTO MY WORK (TRANSPARENCY)</span>
-          </div>
-          <p className="text-xs sm:text-sm text-ink-secondary leading-relaxed max-w-3xl">
-            {humanNarrative.howAIFits}
-          </p>
         </div>
 
         {/* Education & Fellowships Strip */}

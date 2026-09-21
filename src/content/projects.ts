@@ -8,7 +8,7 @@ export interface ArchitectureStep {
 
 export interface FlagshipProject {
   id: string;
-  tier: "BUILT" | "EXPERIMENTED" | "BUILDING" | "LONG-TERM";
+  tier: "BUILT_CURRENT" | "BUILT_FOUNDATIONS" | "EXPERIMENTED" | "BUILDING" | "LONG_TERM";
   tierLabel: string;
   number: string;
   title: string;
@@ -28,31 +28,50 @@ export interface FlagshipProject {
   technicalHighlights: string[];
 }
 
-export const projectsHierarchy: {
-  built: FlagshipProject[];
-  experimented: FlagshipProject[];
-  exploring: FlagshipProject[];
-  longTerm: FlagshipProject[];
-} = {
-  built: [
+export const progressionBridge = [
+  {
+    step: "01",
+    title: "PROVN",
+    subtitle: "Proof of Work",
+    question: "Can human developer contributions be independently verified and anchored without platform mercy?",
+    flow: "Human Work → Cryptographic Evidence → On-Chain Reputation",
+  },
+  {
+    step: "02",
+    title: "SENTINEL FINANCE",
+    subtitle: "Guarded Autonomous Action",
+    question: "Can an AI agent make financial decisions while on-chain postconditions guarantee user constraints?",
+    flow: "AI Decision → Constraint Enforcement → Guarded Devnet Settlement",
+  },
+  {
+    step: "03",
+    title: "AGENT VERIFICATION",
+    subtitle: "Proof of Agent Action",
+    question: "How do we prove what an autonomous agent did, under whose authority, and whether policy was respected?",
+    flow: "Agent Execution → Canonical Envelope → Non-Repudiable Receipt",
+  },
+];
+
+export const projectsHierarchy = {
+  builtCurrent: [
     {
       id: "provn",
-      tier: "BUILT",
-      tierLabel: "BUILT · PRODUCTION",
+      tier: "BUILT_CURRENT" as const,
+      tierLabel: "BUILT · CURRENT",
       number: "01",
       title: "PROVN",
       subtitle: "Solana-Native Cryptographic Provenance Protocol",
       tagline: "What if your work history could be independently verified without platform mercy?",
       category: "Cryptographic Infrastructure · Solana",
       theQuestion:
-        "Developer work and agent executions are scattered across PRs, private tools, and fragile platforms. Can we turn contributions into immutable, self-sovereign evidence envelopes signed with a keypair?",
+        "Developer work and agent executions are scattered across PRs, private tools, and fragile platforms. Resumes can be fabricated or deleted. Can we turn contributions into immutable, self-sovereign evidence envelopes signed with a keypair?",
       whatIHadToLearn:
-        "I didn't start as an expert in Solana. I went deep into Solana documentation, Anchor specifications, Ed25519 signature mechanics, Arweave transaction tagging, and Row-Level Security in Postgres. AI tools accelerated the implementation while I focused on the cryptographic boundaries and threat model.",
+        "I didn't start as an expert in Solana. I went deep into Solana documentation, Anchor specifications, Ed25519 signature mechanics, Arweave transaction tagging, and Row-Level Security in Postgres. AI tools accelerated the implementation while I focused on the cryptographic boundaries, threat model, and verification gates.",
       howTheSystemWorked:
         "Users or agents sign canonical JSON work envelopes with Ed25519 keypairs. An API gateway enforces a ±15-minute anti-replay sliding window. Evidence envelopes are permanently archived to Arweave via Irys, and immutable commitments are anchored to deterministic Solana PDAs [b'proof', authority, proof_id].",
       whatActuallyShipped:
-        "A live, running protocol on Solana Devnet and Irys, 294 air-gapped cryptographic unit tests, 304 passing CI tests, a live verifier inspector, and dynamic SVG proof passports.",
-      stack: ["Solana", "Anchor (Learning)", "Rust", "Ed25519", "Irys / Arweave", "Next.js", "Postgres RLS"],
+        "A live, running protocol on Solana Devnet and Irys, 294 air-gapped cryptographic unit tests, 304 passing CI tests, a live verifier inspector, dynamic SVG proof passports, and protection against 5 active threat vectors documented in the Litepaper.",
+      stack: ["Solana", "Anchor (Building & Learning)", "Rust", "Ed25519", "Irys / Arweave", "Next.js", "Postgres RLS"],
       liveUrl: "https://provn-sol.vercel.app",
       repoUrl: "https://github.com/dren712/pow-logger",
       flowTitle: "PROVENANCE EXECUTION PIPELINE",
@@ -61,14 +80,14 @@ export const projectsHierarchy: {
           id: "p1",
           stepNumber: "01",
           title: "Sign with Keypair",
-          description: "Author signs canonical work envelope with their Ed25519 keypair, binding identity to work.",
+          description: "Author signs canonical work envelope with Ed25519 keypair, binding identity to contribution.",
           subtext: "Cryptographic origin",
         },
         {
           id: "p2",
           stepNumber: "02",
           title: "Anti-Replay Verification",
-          description: "Gateway validates signature and consumes single-use challenge within a ±15-minute window.",
+          description: "Gateway validates signature and consumes single-use challenge within a ±15-minute sliding window.",
           subtext: "Replay defense",
         },
         {
@@ -89,34 +108,100 @@ export const projectsHierarchy: {
           id: "p5",
           stepNumber: "05",
           title: "Independent Verifier",
-          description: "Third parties inspect the 5-link cryptographic chain independently with zero-knowledge trust.",
+          description: "Third parties inspect the 5-link cryptographic chain independently with zero-knowledge assumptions.",
           subtext: "Public verification",
         },
       ],
       technicalHighlights: [
-        "294 offline tests covering signature tampering, challenge expiration, and replay attacks",
+        "294 offline tests covering signature tampering, challenge expiration, and replay defense",
         "Deterministic PDA derivations [b'proof', authority, proof_id]",
         "Permanent decentralized archival via Irys and Arweave L1",
         "SIWS OAuth binding GitHub identities to Solana wallet keypairs",
       ],
     },
     {
-      id: "raspberry-pi-nas",
-      tier: "BUILT",
-      tierLabel: "BUILT · SELF-HOSTED INFRASTRUCTURE",
+      id: "sentinel-finance",
+      tier: "BUILT_CURRENT" as const,
+      tierLabel: "BUILT · STOCKLANA HACKATHON · 2026",
       number: "02",
+      title: "SENTINEL FINANCE",
+      subtitle: "Autonomous Financial Agent Execution & Policy Guardrails on Solana",
+      tagline: "What if an AI agent could make the decision — but could never settle an outcome that violated the user's rules?",
+      category: "Autonomous Finance · Solana Devnet Program",
+      theQuestion:
+        "When an investor delegates portfolio management to an autonomous agent, authorization alone is not enough. The agent can be allowed to trade. But what guarantees that the resulting financial state still satisfies the investor's rules? Sentinel explores a stricter model: The agent can decide. The protocol decides whether the resulting state is allowed to settle.",
+      whatIHadToLearn:
+        "Anchor program architecture, Solana account and state modeling, on-chain policy enforcement, financial invariant checks, fixed-point financial math, Pyth price feed consumption, Meteora DBC execution adapters, autonomous agent loop orchestration, and PROVN evidence commitments. Another unfamiliar domain encountered, researched, decomposed, and assembled into a functioning prototype.",
+      howTheSystemWorked:
+        "The agent proposes a trade. Sentinel evaluates whether the resulting financial state violates defined constraints: maximum single-asset exposure, minimum stablecoin reserve, maximum trade size, slippage bounds, and pre-IPO allocation ceilings. The Anchor program's `execute_guarded_trade` instruction is the authoritative enforcement boundary: if compliant, it settles; if non-compliant, it atomically reverts. All executions generate PROVN cryptographic evidence envelopes.",
+      whatActuallyShipped:
+        "A working Stocklana hackathon prototype with a live Solana Devnet Anchor program, policy engine, autonomous robo-agent loop, execution adapters (Meteora, PreStocks), and PROVN evidence integration. The repository explicitly distinguishes between verified on-chain code, cryptographic engines, and simulated execution.",
+      stack: ["Solana Devnet", "Anchor Program", "Rust", "Python", "Pyth Oracle", "Meteora DBC", "PROVN Receipts"],
+      repoUrl: "https://github.com/dren712/sentinel_finance",
+      flowTitle: "FLAGSHIP FIVE-STEP GUARDED DEMO",
+      flowSteps: [
+        {
+          id: "s1",
+          stepNumber: "01",
+          title: "Connect & Set Constraints",
+          description: "Investor defines strict vault invariants: max 25% single-asset exposure, min 30% stablecoin reserve.",
+          subtext: "Policy boundary",
+        },
+        {
+          id: "s2",
+          stepNumber: "02",
+          title: "Agent Proposes Violating Trade",
+          description: "Autonomous robo-agent attempts a 45% allocation to an aggressive asset based on market signals.",
+          subtext: "Autonomous decision",
+        },
+        {
+          id: "s3",
+          stepNumber: "03",
+          title: "Sentinel Rejects & Reverts",
+          description: "execute_guarded_trade instruction checks postconditions against Pyth feeds and atomically reverts.",
+          subtext: "On-chain revert",
+        },
+        {
+          id: "s4",
+          stepNumber: "04",
+          title: "Agent Adapts Strategy",
+          description: "Robo-agent parses revert constraints, recalculates allocations within bounds, and resubmits.",
+          subtext: "Adaptive loop",
+        },
+        {
+          id: "s5",
+          stepNumber: "05",
+          title: "Compliant Trade Settles",
+          description: "Guarded transaction satisfies all postconditions, settles on Solana Devnet, and records PROVN receipt.",
+          subtext: "Guaranteed settlement",
+        },
+      ],
+      technicalHighlights: [
+        "On-chain postcondition enforcement via Anchor execute_guarded_trade instruction",
+        "Deterministic financial invariant validation (exposure caps, reserve floors, slippage bounds)",
+        "Integrated Pyth network price feeds and Meteora dynamic bonding curve adapter",
+        "Direct bridge between autonomous decision-making and verifiable cryptographic proofs",
+      ],
+    },
+  ],
+  builtFoundations: [
+    {
+      id: "raspberry-pi-nas",
+      tier: "BUILT_FOUNDATIONS" as const,
+      tierLabel: "BUILT · 2025 · 3RD YEAR MINI PROJECT",
+      number: "03",
       title: "Raspberry Pi Private Cloud NAS",
-      subtitle: "Self-Hosted Microservices & Private Storage Cloud",
+      subtitle: "Self-Hosted Microservices & Private Cloud Architecture",
       tagline: "I wanted my own cloud.",
       category: "Systems Infrastructure · Linux & Docker",
       theQuestion:
-        "Why depend on centralized cloud storage providers when you can build and operate your own miniature private cloud with containerized services and remote networking?",
+        "Why depend on centralized commercial cloud storage when you can build and operate your own miniature private cloud with containerized services and remote networking?",
       whatIHadToLearn:
-        "Linux system administration from scratch, systemd services, Docker container orchestration, reverse tunneling (ngrok), local area network routing, file-system permissions, and physical thermal management on ARM SBC hardware.",
+        "Linux system administration from scratch, systemd services, Docker container orchestration, reverse tunneling (ngrok), local area network routing, file-system permissions, and physical thermal constraints on ARM SBC hardware.",
       howTheSystemWorked:
         "The Raspberry Pi acted as a physical host running a customized Linux OS. Docker containerized independent microservices and storage daemons. An ngrok tunnel provided secure, encrypted remote access from outside the local network without exposing raw router ports.",
       whatActuallyShipped:
-        "A continuously operating physical home server providing personal file storage, remote media streaming, and isolated service containers accessible from any device over the internet.",
+        "A continuously operating physical home server providing personal file storage, remote media streaming, and isolated service containers accessible from any device over the internet. Demonstrates infrastructure thinking before Web3.",
       stack: ["Raspberry Pi", "Linux (Debian)", "Docker", "Docker Compose", "ngrok", "Networking", "Bash"],
       flowTitle: "PRIVATE CLOUD TOPOLOGY",
       flowSteps: [
@@ -124,7 +209,7 @@ export const projectsHierarchy: {
           id: "pi1",
           stepNumber: "01",
           title: "Incoming Internet Request",
-          description: "Remote client requests access from outside local network.",
+          description: "Remote client requests access from outside the local home network.",
           subtext: "External network",
         },
         {
@@ -165,9 +250,9 @@ export const projectsHierarchy: {
     },
     {
       id: "hpurn",
-      tier: "BUILT",
-      tierLabel: "BUILT · ACADEMIC RESEARCH",
-      number: "03",
+      tier: "BUILT_FOUNDATIONS" as const,
+      tierLabel: "BUILT · 2026 · FINAL YEAR MAJOR PROJECT",
+      number: "04",
       title: "HPURN — AI-Based Video Dehazing",
       subtitle: "Deep Learning Pipeline for Spatiotemporal Video Restoration",
       tagline: "What happens when image restoration has to work across time, not just individual frames?",
@@ -175,7 +260,7 @@ export const projectsHierarchy: {
       theQuestion:
         "Single-image dehazing methods flicker and fail when applied to continuous video streams. How do we preserve temporal consistency across frames while removing non-uniform haze?",
       whatIHadToLearn:
-        "Reading academic computer vision papers, atmospheric scattering models, Dark Channel Prior mathematics, ConvLSTM recurrent spatiotemporal architectures, and adversarial loss formulations in CycleGAN.",
+        "Reading academic computer vision papers, atmospheric scattering models, Dark Channel Prior mathematics, ConvLSTM recurrent spatiotemporal architectures, and adversarial loss formulations in CycleGAN. An early example of learning unfamiliar techniques, combining them into a system, and turning it into research.",
       howTheSystemWorked:
         "Combined a physics-based Dark Channel Prior (DCP) with an AOD-Net transmission estimator, passed recurrent features through ConvLSTM to enforce inter-frame smoothness, and refined visual quality using CycleGAN unpaired adversarial translation.",
       whatActuallyShipped:
@@ -231,9 +316,9 @@ export const projectsHierarchy: {
   experimented: [
     {
       id: "forge",
-      tier: "EXPERIMENTED",
+      tier: "EXPERIMENTED" as const,
       tierLabel: "EXPERIMENTED · HACKATHON PROTOTYPE",
-      number: "04",
+      number: "05",
       title: "FORGE",
       subtitle: "Autonomous Agent Evolution Engine",
       tagline: "A few-hour hackathon experiment in autonomous agent engineering.",
@@ -290,13 +375,13 @@ export const projectsHierarchy: {
   exploring: [
     {
       id: "agent-verification",
-      tier: "BUILDING",
+      tier: "BUILDING" as const,
       tierLabel: "BUILDING / EXPLORING",
-      number: "05",
+      number: "06",
       title: "Agent Verification Layer",
-      subtitle: "Cryptographic Audit Receipts & Policy Gates for AI Agents",
-      tagline: "How do we prove what an autonomous agent did, under whose authority, and whether policy was respected?",
-      category: "Active Exploration · AI × Cryptography",
+      subtitle: "Cryptographic Audit Receipts & Policy Gates for Autonomous Agents",
+      tagline: "Can autonomous software actions themselves be proven?",
+      category: "Active Research · AI × Cryptography",
       theQuestion:
         "As autonomous agents execute code changes, API calls, and x402 payments, organizations need non-repudiable receipts. How do we verify agent behavior without human bottlenecks?",
       whatIHadToLearn:
@@ -304,7 +389,7 @@ export const projectsHierarchy: {
       howTheSystemWorked:
         "Agents generate structured execution traces signed with dedicated Ed25519 keypairs, verified against deterministic policy gates, and anchored on-chain for dispute resolution.",
       whatActuallyShipped:
-        "Active architectural specifications, threat models, and pilot receipt prototypes evolving directly out of the PROVN cryptographic core.",
+        "Active architectural specifications, threat models, and receipt prototypes evolving directly out of the PROVN cryptographic core.",
       stack: ["Solana", "Ed25519", "x402 Payments", "Agent Keypairs", "Anchor"],
       flowTitle: "AGENT VERIFICATION FLOW",
       flowSteps: [
@@ -338,7 +423,7 @@ export const projectsHierarchy: {
         },
       ],
       technicalHighlights: [
-        "Natural evolution from human proof-of-work (PROVN) to autonomous agent proof-of-action",
+        "Natural evolution from human proof-of-work (PROVN) and guarded action (Sentinel) to autonomous proof-of-action",
         "Focuses on verifiable receipts and policy enforcement for AI systems that execute money and code",
       ],
     },
@@ -346,9 +431,9 @@ export const projectsHierarchy: {
   longTerm: [
     {
       id: "civilization-engine",
-      tier: "LONG-TERM",
-      tierLabel: "LONG-TERM INTELLECTUAL THESIS",
-      number: "06",
+      tier: "LONG_TERM" as const,
+      tierLabel: "LONG-TERM RESEARCH THESIS",
+      number: "07",
       title: "Civilization Engine & Cultural Ledger",
       subtitle: "Research Exploration in Autonomous Living Worlds",
       tagline: "A question I'm obsessed with: What happens when generative worlds can remember, evolve, and create their own cultural continuity?",

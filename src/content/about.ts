@@ -79,7 +79,7 @@ export const careerPhases: TimelineAct[] = [
     title: "AI-Native Engineering",
     subtitle: "Orchestrating AI Tools & Documentation",
     summary:
-      "AI tools radically changed how quickly I could explore unfamiliar technical domains. By reading documentation, decomposing systems, designing architecture, and directing AI coding agents, I can turn complex specifications into working software at high speed.",
+      "AI became an implementation multiplier: documentation, decomposition, orchestration, and verification.",
     focus: "System decomposition, technical orchestration, rapid verification",
     technologies: ["Claude", "Google Antigravity", "Gemini", "Technical Specs", "AI Workflows"],
   },
@@ -87,11 +87,11 @@ export const careerPhases: TimelineAct[] = [
     actNumber: "06",
     phase: "PHASE 6",
     title: "Autonomous & Verifiable Systems",
-    subtitle: "PROVN → Agent Verification → Civilization Engine",
+    subtitle: "PROVN → Sentinel Finance → Agent Verification",
     summary:
-      "Today, the central question is: How do we make systems that can act while still being verifiable? When AI agents invoke tools and execute payments, how do we prove what happened? That inquiry drives PROVN, Agent Verification receipts, and the Civilization Engine thesis.",
-    focus: "Cryptographic receipts, agent policy gates, living-world simulation",
-    technologies: ["PROVN Protocol", "Agent Verification Layer", "Civilization Engine"],
+      "Today, the central question is: How do we make systems that can act while still being verifiable? When AI agents make financial trades or invoke tools, how do we enforce policy boundaries and prove what happened? That inquiry connects PROVN, Sentinel Finance, and the Agent Verification Layer.",
+    focus: "Cryptographic receipts, financial invariants, agent policy gates",
+    technologies: ["PROVN Protocol", "Sentinel Finance", "Agent Verification Layer", "Civilization Engine"],
   },
 ];
 
