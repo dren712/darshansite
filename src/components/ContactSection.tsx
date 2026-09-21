@@ -24,7 +24,7 @@ export const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Inquiry from ${formData.name || "Portfolio Visitor"}`);
+    const subject = encodeURIComponent(`Portfolio Inquiry from ${formData.name || "Colleague"}`);
     const body = encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     );
@@ -36,22 +36,21 @@ export const ContactSection: React.FC = () => {
     <section id="contact" className="py-20 border-b border-paper-border bg-paper">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          {/* Left Column (7 cols): Editorial Stance & Direct Links */}
+          {/* Left Column (7 cols): Direct Contact & Links */}
           <div className="lg:col-span-7 space-y-6">
             <div className="flex items-center gap-2 font-mono text-xs text-ink-muted">
               <span className="w-1.5 h-1.5 rounded-full bg-nordic-red"></span>
               <span className="font-semibold uppercase tracking-wider text-ink text-[11px]">
-                INITIATE DIALOGUE
+                CONTACT
               </span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-bold text-ink tracking-tight leading-tight">
-              Have an unconventional idea? <br />
-              <span className="text-ink-secondary font-medium">Let&apos;s build the system behind it.</span>
+              Open to remote Web3 / AI infrastructure roles, collaborations and interesting technical problems.
             </h2>
 
             <p className="text-base text-ink-secondary leading-relaxed font-sans max-w-xl">
-              I focus on autonomous AI agent coordination, cryptographic proof systems, Solana runtime primitives, and living-world architectures. Open for high-conviction engineering roles, research fellowships, or co-founder discussions.
+              Whether you want to discuss verifiable AI agent architecture, decentralized state on Solana, or building something ambitious, feel free to reach out.
             </p>
 
             {/* Direct Contact Cards (Email & Phone) */}
@@ -61,7 +60,7 @@ export const ContactSection: React.FC = () => {
                 <div>
                   <div className="text-[10px] text-ink-muted uppercase tracking-wider flex items-center gap-1.5">
                     <Mail className="w-3 h-3 text-nordic-red" />
-                    <span>Direct Email</span>
+                    <span>Email</span>
                   </div>
                   <div className="text-xs sm:text-sm text-ink font-semibold select-all mt-1 truncate">
                     {siteConfig.social.email}
@@ -95,12 +94,12 @@ export const ContactSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Phone / Contact Card */}
+              {/* Phone Card */}
               <div className="p-4 rounded-sm border border-paper-border bg-paper-surface flex flex-col justify-between space-y-3">
                 <div>
                   <div className="text-[10px] text-ink-muted uppercase tracking-wider flex items-center gap-1.5">
                     <Phone className="w-3 h-3 text-nordic-red" />
-                    <span>Direct Contact / Call</span>
+                    <span>Direct Call</span>
                   </div>
                   <div className="text-xs sm:text-sm text-ink font-semibold select-all mt-1">
                     {siteConfig.social.phone}
@@ -135,7 +134,7 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Social / Code Links */}
+            {/* Social Links */}
             <div className="pt-2 flex flex-wrap items-center gap-3 font-mono text-xs">
               <a
                 href={siteConfig.social.github}
@@ -169,7 +168,7 @@ export const ContactSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column (5 cols): Accessible, High-Contrast Form */}
+          {/* Right Column (5 cols): Clean Form */}
           <div className="lg:col-span-5 w-full">
             <div className="p-6 sm:p-8 rounded-sm border border-paper-border bg-paper-surface space-y-5">
               <div className="text-xs font-mono text-ink font-bold uppercase tracking-wider border-b border-paper-line pb-3">
@@ -181,9 +180,9 @@ export const ContactSection: React.FC = () => {
                   <div className="w-8 h-8 rounded-full bg-nordic-redFaint border border-nordic-redBorder text-nordic-red flex items-center justify-center mx-auto">
                     <Check className="w-4 h-4" />
                   </div>
-                  <h4 className="font-bold text-ink text-sm">Message Dispatch Ready</h4>
+                  <h4 className="font-bold text-ink text-sm">Message Ready</h4>
                   <p className="text-xs text-ink-secondary">
-                    Launching default mail client to dispatch your message to {siteConfig.social.email}.
+                    Opening your mail client to send your message to {siteConfig.social.email}.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
@@ -196,12 +195,12 @@ export const ContactSection: React.FC = () => {
                 <form onSubmit={handleSubmit} className="space-y-4 font-sans">
                   <div className="space-y-1.5">
                     <label className="text-xs font-mono text-ink-secondary block font-medium">
-                      Name / Organization
+                      Name
                     </label>
                     <input
                       type="text"
                       required
-                      placeholder="Your name or team"
+                      placeholder="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       className="w-full px-3.5 py-2 rounded-sm bg-paper border border-paper-border text-ink text-xs font-mono focus:outline-none focus:border-ink focus:ring-1 focus:ring-ink"
@@ -224,12 +223,12 @@ export const ContactSection: React.FC = () => {
 
                   <div className="space-y-1.5">
                     <label className="text-xs font-mono text-ink-secondary block font-medium">
-                      Project or Architecture Scope
+                      Message
                     </label>
                     <textarea
                       required
                       rows={4}
-                      placeholder="Brief overview of what you're designing or need verified..."
+                      placeholder="What would you like to talk about?"
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-3.5 py-2 rounded-sm bg-paper border border-paper-border text-ink text-xs font-mono focus:outline-none focus:border-ink focus:ring-1 focus:ring-ink resize-none"

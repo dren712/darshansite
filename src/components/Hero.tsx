@@ -17,27 +17,25 @@ export const Hero: React.FC = () => {
               {/* Restrained single eyebrow */}
               <div className="flex items-center gap-2 font-mono text-xs text-ink-muted">
                 <span className="w-1.5 h-1.5 rounded-full bg-nordic-red"></span>
-                <span>PUNE, INDIA · AI-NATIVE SYSTEMS THINKER &amp; BUILDER</span>
+                <span>PUNE, INDIA</span>
               </div>
 
-              {/* Headline: Max 2 lines on desktop */}
+              {/* Headline: Clean, bold, direct */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-sans font-bold tracking-tight text-ink leading-[1.08]">
-                AI-native systems thinker and builder.
+                AI-native builder. <br className="hidden sm:inline" />
+                Systems thinker.
               </h1>
 
-              {/* Subtext: Disciplined, authentic, under 20 words */}
+              {/* Supporting line */}
               <p className="text-base sm:text-lg text-ink-secondary leading-relaxed font-sans max-w-xl">
-                I think in systems, learn from the docs, orchestrate the build, and ship the result.
+                I turn unfamiliar technologies, ambitious ideas and AI-assisted development into working systems.
               </p>
 
-              {/* Axiom & Deeper Idea */}
-              <div className="space-y-2">
+              {/* Philosophy Axiom - Unadorned */}
+              <div className="pt-1">
                 <div className="inline-flex items-center gap-3 py-2 px-3.5 border border-paper-border bg-paper-surface font-mono text-xs text-ink-secondary">
                   <span className="text-nordic-red font-semibold">AXIOM:</span>
                   <span>Architecture &gt; Systems &gt; Optimization &gt;&gt; Code</span>
-                </div>
-                <div className="text-xs text-ink-muted font-mono">
-                  &ldquo;I don&apos;t need to know everything before I start building. I need to know how to figure things out.&rdquo;
                 </div>
               </div>
             </div>
