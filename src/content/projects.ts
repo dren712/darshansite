@@ -242,9 +242,9 @@ export const projectsHierarchy = {
         },
       ],
       technicalHighlights: [
-        "A student looked at cloud infrastructure and decided to build a tiny version of it himself",
         "Hands-on mastery of Linux permissions, ARM architectures, and networking protocols",
         "Operated as a functional personal daily driver for remote file synchronization",
+        "Containerized independent microservices with secure reverse tunneling via ngrok",
       ],
     },
     {
@@ -305,7 +305,7 @@ export const projectsHierarchy = {
         },
       ],
       technicalHighlights: [
-        "Government of India Copyright registered for video dehazing architecture",
+        "Government of India Copyright registered",
         "Academic paper accepted with minor revisions at ICAIMEST",
         "Combined classical physics-based optics (DCP) with modern deep recurrent networks",
         "Rigorous empirical evaluation against standard computer vision benchmarks (RESIDE-6k)",

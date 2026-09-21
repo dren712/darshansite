@@ -255,10 +255,10 @@ export const FeaturedWork: React.FC = () => {
         <div className="space-y-6">
           <div className="flex items-center gap-3 border-b border-paper-line pb-2 font-mono text-xs">
             <span className="font-bold text-ink uppercase tracking-wider text-sm">
-              [ BUILT · CURRENT ]
+              [ CURRENT SYSTEMS &amp; RESEARCH ]
             </span>
             <span className="text-ink-muted text-[11px]">
-              Active flagship systems on Solana Devnet &amp; permanent storage · Code, proofs, and verified invariants
+              Independent builds, active experiments, and architectures evolving around verifiable autonomous systems
             </span>
           </div>
 

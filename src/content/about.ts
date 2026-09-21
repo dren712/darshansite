@@ -77,7 +77,7 @@ export const careerPhases: TimelineAct[] = [
     title: "AI-Native Engineering",
     subtitle: "The Implementation Multiplier",
     summary:
-      "AI became an implementation multiplier: documentation, decomposition, orchestration, and verification.",
+      "AI became an implementation multiplier.",
     focus: "Accelerated prototyping, documentation-driven decomposition",
     technologies: ["Claude", "Google Antigravity", "Gemini", "Technical Documentation"],
   },
