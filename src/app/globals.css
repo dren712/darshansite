@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-paper: #F9F9F6;
+  --color-paper-subtle: #F2F2EC;
+  --color-paper-surface: #FFFFFF;
+  --color-ink-primary: #171717;
+  --color-ink-secondary: #555555;
+  --color-ink-muted: #7A7A7A;
+  --color-border: #E2E2DA;
+  --color-border-subtle: #ECECE6;
+  --color-nordic-red: #8B2E2E;
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-paper);
+  color: var(--color-ink-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink-primary);
+  min-height: 100dvh;
+}
+
+/* Subtle architectural paper grid (clean, low-contrast hairline) */
+.paper-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+}
+
+/* Minimal architectural rule */
+.hairline-b {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hairline-t {
+  border-top: 1px solid var(--color-border);
+}
+
+.hairline-r {
+  border-right: 1px solid var(--color-border);
+}
+
+.hairline-l {
+  border-left: 1px solid var(--color-border);
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-paper);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-muted);
+}
+
+/* Restrained selection */
+::selection {
+  background-color: rgba(139, 46, 46, 0.15);
+  color: #171717;
+}
+
+/* Typography utilities */
+.font-editorial {
+  letter-spacing: -0.025em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
