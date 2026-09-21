@@ -36,22 +36,26 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: "Darshan Gaikwad",
-  title: "Darshan Gaikwad · AI-Native Builder & Systems Thinker",
-  headline: "AI-native builder. Systems thinker.",
+  title: "Darshan Gaikwad · AI-Native Systems Thinker & Builder",
+  headline: "AI-native systems thinker and builder.",
   subheadline:
-    "I turn unfamiliar technologies, ambitious ideas and AI-assisted development into working systems.",
+    "I research unfamiliar technologies, design systems, orchestrate AI-assisted implementation and turn ambitious ideas into working software.",
   philosophy: "Architecture > Systems > Optimization >> Code",
   narrativeLoop: [
+    "Idea",
     "Question",
     "Research",
-    "Design",
-    "Orchestrate",
+    "Documentation",
+    "System Design",
+    "Orchestration",
+    "AI Implementation",
     "Verify",
     "Ship",
+    "Iterate",
   ],
   location: "Pune, India",
   coordinates: "18.5204° N, 73.8567° E",
-  status: "Open to remote Web3 / AI infrastructure roles and interesting technical problems",
+  status: "Exploring systems engineering, research, and AI-native builder opportunities",
   education: {
     degree: "B.E. (Bachelor of Engineering)",
     field: "Electronics & Telecommunication Engineering",
@@ -67,10 +71,11 @@ export const siteConfig: SiteConfig = {
     phone: "+91 8766895053",
   },
   navigation: [
+    { label: "Systems", href: "#systems" },
     { label: "Work", href: "#work" },
-    { label: "How I Work", href: "#how-i-work" },
     { label: "About", href: "#about" },
-    { label: "Exploring", href: "#exploring" },
+    { label: "Methodology", href: "#methodology" },
+    { label: "Lab", href: "#lab" },
     { label: "Contact", href: "#contact" },
   ],
   credibility: [

@@ -17,7 +17,7 @@ export const Footer: React.FC = () => {
               DARSHAN GAIKWAD
             </div>
             <p className="text-[11px] text-ink-secondary font-sans">
-              Pune, India · AI / Systems / Infrastructure
+              Pune, India · Systems, Cryptography &amp; Solana Infrastructure
             </p>
           </div>
 
@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px]">
-          <div>&copy; 2026 Darshan Gaikwad · Pune, India · AI / Systems / Infrastructure</div>
+          <div>&copy; {new Date().getFullYear()} Darshan Gaikwad. MIT License.</div>
           <div className="text-ink-muted">ᛞᚨᚱᛋᚺᚨᚾ · दर्शन · DARSHAN</div>
         </div>
       </div>

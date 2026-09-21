@@ -1,3 +1,13 @@
+export interface TimelineAct {
+  actNumber: string;
+  phase: string;
+  title: string;
+  subtitle: string;
+  summary: string;
+  focus: string;
+  technologies: string[];
+}
+
 export interface BuildStep {
   step: string;
   name: string;
@@ -5,72 +15,127 @@ export interface BuildStep {
   description: string;
 }
 
-export interface TrajectoryMilestone {
-  stage: string;
-  title: string;
-  description: string;
-}
-
 export const humanNarrative = {
   hook: "I tend to ask questions that eventually become engineering problems.",
-  paragraphs: [
+  story: [
     "I started with electronics.",
-    "Then machine learning.",
+    "Then I got obsessed with machine learning.",
     "Then I built my own little cloud on a Raspberry Pi.",
-    "Then I fell into Solana.",
-    "Today I use AI heavily to explore technical territory I wouldn't be able to cover alone. I spend a lot of time reading documentation, designing systems, orchestrating tools and figuring out why things break. I'm still learning. That's kind of the point.",
+    "Then I fell down the Solana rabbit hole.",
+    "Now AI lets me explore systems far outside the boundaries of what I could comfortably build alone.",
+    "I spend a lot of time reading documentation, figuring out unfamiliar systems, designing architectures, and orchestrating AI tools to turn those ideas into working software.",
+    "I'm still learning a lot. That's kind of the point.",
   ],
-  trajectory: [
-    { stage: "01", title: "Hardware", description: "Circuits, microcontrollers, physical constraints" },
-    { stage: "02", title: "Machine Learning", description: "Image restoration, probabilistic models, PyTorch" },
-    { stage: "03", title: "Infrastructure", description: "Raspberry Pi private cloud, Docker, networking" },
-    { stage: "04", title: "Solana", description: "Anchor, Rust, PDAs, cryptographic verification" },
-    { stage: "05", title: "AI-Native Building", description: "System decomposition, orchestration, rapid implementation" },
-    { stage: "06", title: "Autonomous Systems", description: "Agent verification, execution receipts, living worlds" },
-  ],
+  axiom: "Architecture > Systems > Optimization >> Code",
+  distinction: "AI accelerates implementation. It does not replace understanding.",
+  howAIFits:
+    "I use AI heavily. Claude, Antigravity, Gemini, and technical documentation are part of my daily development environment. I don't view that as 'AI writing code for me' — I view it as an extremely fast implementation layer. I still need to know what system I want, what constraints matter, what to verify, and when an AI-generated implementation is wrong.",
 };
+
+export const careerPhases: TimelineAct[] = [
+  {
+    actNumber: "01",
+    phase: "PHASE 1",
+    title: "Hardware & Physical Constraints",
+    subtitle: "Electronics & Telecommunication Engineering (PCCOER)",
+    summary:
+      "Working with microcontrollers, sensor telemetry, and circuits taught me that software is only one component of a larger system. Memory, clock cycles, voltage drops, and noisy inputs cannot be hand-waved away.",
+    focus: "Physical constraints, embedded control, hardware feedback loops",
+    technologies: ["ESP8266", "Arduino", "Embedded C++", "Sensors", "Hardware Constraints"],
+  },
+  {
+    actNumber: "02",
+    phase: "PHASE 2",
+    title: "Machine Learning & Image Restoration",
+    subtitle: "HPURN Neural Dehazing & Academic Research",
+    summary:
+      "Moved from circuits to probabilistic models. Video dehazing taught me how to combine different algorithms (Dark Channel Prior, ConvLSTM, CycleGAN) into an integrated pipeline, resulting in an accepted paper at ICAIMEST and a Govt. of India Copyright.",
+    focus: "Combining unfamiliar techniques into larger systems, benchmark evaluation",
+    technologies: ["PyTorch", "CycleGAN", "ConvLSTM", "Dark Channel Prior", "RESIDE-6k"],
+  },
+  {
+    actNumber: "03",
+    phase: "PHASE 3",
+    title: "Self-Hosted Infrastructure",
+    subtitle: "Raspberry Pi Private Cloud NAS",
+    summary:
+      "I wanted my own cloud. Instead of using off-the-shelf cloud services, I built a miniature private cloud on a Raspberry Pi using Docker, networking tunnels (ngrok), microservice routing, and local storage. This was infrastructure thinking before Web3.",
+    focus: "Microservice routing, containerization, private networking, storage",
+    technologies: ["Raspberry Pi", "Docker", "Linux", "ngrok", "Local Storage"],
+  },
+  {
+    actNumber: "04",
+    phase: "PHASE 4",
+    title: "Web3 & Decentralized Primitives",
+    subtitle: "Solana, Cryptography & Verifiable State",
+    summary:
+      "Solana introduced programmable ownership, cryptographic signatures (Ed25519), and open state machines. Learned Anchor, Program Derived Addresses (PDAs), and permanent Arweave storage via Irys, participating in Solana School (Fall 2026).",
+    focus: "Actively building and learning Solana engineering and on-chain state",
+    technologies: ["Solana", "Anchor (Learning)", "Rust (Building)", "Ed25519", "Irys / Arweave"],
+  },
+  {
+    actNumber: "05",
+    phase: "PHASE 5",
+    title: "AI-Native Engineering",
+    subtitle: "Orchestrating AI Tools & Documentation",
+    summary:
+      "AI tools radically changed how quickly I could explore unfamiliar technical domains. By reading documentation, decomposing systems, designing architecture, and directing AI coding agents, I can turn complex specifications into working software at high speed.",
+    focus: "System decomposition, technical orchestration, rapid verification",
+    technologies: ["Claude", "Google Antigravity", "Gemini", "Technical Specs", "AI Workflows"],
+  },
+  {
+    actNumber: "06",
+    phase: "PHASE 6",
+    title: "Autonomous & Verifiable Systems",
+    subtitle: "PROVN → Agent Verification → Civilization Engine",
+    summary:
+      "Today, the central question is: How do we make systems that can act while still being verifiable? When AI agents invoke tools and execute payments, how do we prove what happened? That inquiry drives PROVN, Agent Verification receipts, and the Civilization Engine thesis.",
+    focus: "Cryptographic receipts, agent policy gates, living-world simulation",
+    technologies: ["PROVN Protocol", "Agent Verification Layer", "Civilization Engine"],
+  },
+];
 
 export const buildLoop: BuildStep[] = [
   {
     step: "01",
     name: "Question",
-    question: "What am I actually trying to build?",
+    question: "What is the actual system we need?",
     description:
-      "Identify the true problem, core requirements, and non-negotiable constraints before touching code.",
+      "I rarely start with 'how do I code this?' I start with 'what is the system?' Identify what problem needs solving and what constraints cannot be violated.",
   },
   {
     step: "02",
-    name: "Research",
-    question: "What do the docs, papers, and specs say?",
+    name: "Research & Documentation",
+    question: "What does the documentation actually say?",
     description:
-      "Read technical documentation, protocol specifications, and reference repositories until the mechanics make sense.",
+      "I read. I go through documentation, specifications, open-source repositories, and technical examples until I understand enough of the underlying mechanics to make architectural choices.",
   },
   {
     step: "03",
-    name: "Design",
-    question: "How do the systems and boundaries connect?",
+    name: "System Design",
+    question: "How do the primitives connect?",
     description:
-      "Decompose the problem into clean primitives, data flows, state transitions, and failure modes.",
+      "Map out the data flow, state machines, trust boundaries, and failure modes. Decompose a vague, ambitious idea into concrete, executable components.",
   },
   {
     step: "04",
-    name: "Orchestrate",
-    question: "How do we accelerate implementation with AI?",
+    name: "AI-Assisted Build",
+    question: "How do we orchestrate implementation rapidly?",
     description:
-      "Direct AI coding tools (Claude, Antigravity, Gemini) with clear architectural context to generate components rapidly.",
+      "I give detailed instructions to coding agents (Claude, Antigravity, Gemini). AI handles a large part of the implementation acceleration while I guide the trajectory.",
   },
   {
     step: "05",
-    name: "Verify",
-    question: "Where is the generated code or logic wrong?",
+    name: "Verify & Challenge",
+    question: "Where is the generated code wrong?",
     description:
-      "Review the implementation, test boundary conditions, challenge hallucinations, and ensure invariants hold.",
+      "Review the implementation, write tests, inspect edge cases, check anti-replay windows, and test against real APIs. Find where the AI or assumptions failed.",
   },
   {
     step: "06",
-    name: "Ship",
+    name: "Ship & Iterate",
     question: "Is it running and verified in the real world?",
     description:
-      "Deploy to real environments, observe real behavior, and iterate continuously on feedback.",
+      "Deploy the system, observe real behavior, and continuously pull the software toward the thing I actually set out to build.",
   },
 ];
