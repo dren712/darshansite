@@ -3,19 +3,34 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
+    setIsDark(document.documentElement.classList.contains("dark"));
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const next = !isDark;
+    setIsDark(next);
+    if (next) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
   return (
     <header
@@ -53,12 +68,32 @@ export const Navbar: React.FC = () => {
             ))}
           </nav>
 
-          {/* Right Status & Contact */}
-          <div className="hidden lg:flex items-center gap-4">
-            <div className="flex items-center gap-2 text-xs font-mono text-ink-muted">
+          {/* Right Status, Theme Toggle & Contact */}
+          <div className="hidden lg:flex items-center gap-3">
+            <div className="flex items-center gap-2 text-xs font-mono text-ink-muted mr-1">
               <span className="w-1.5 h-1.5 rounded-full bg-nordic-red inline-block"></span>
               <span>Available for Systems / Solana Roles</span>
             </div>
+
+            <button
+              onClick={toggleTheme}
+              className="px-2.5 py-1.5 rounded-sm border border-paper-border bg-paper-surface hover:border-ink-muted text-ink-secondary hover:text-ink transition-colors font-mono text-[11px] flex items-center gap-1.5"
+              aria-label="Toggle light and dark mode"
+              title={isDark ? "Switch to Paper Edition (Light)" : "Switch to Night Edition (Dark)"}
+            >
+              {isDark ? (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-nordic-red" />
+                  <span>Light</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5" />
+                  <span>Dark</span>
+                </>
+              )}
+            </button>
+
             <a
               href="#contact"
               className="px-3.5 py-1.5 rounded-sm text-xs font-mono bg-ink text-paper hover:bg-ink/90 transition-colors flex items-center gap-1.5"
@@ -68,11 +103,19 @@ export const Navbar: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex md:hidden items-center">
+          {/* Tablet / Mobile Theme Toggle & Menu Button */}
+          <div className="flex lg:hidden items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              className="p-1.5 rounded-sm border border-paper-border bg-paper-surface text-ink-secondary hover:text-ink transition-colors"
+              aria-label="Toggle light and dark mode"
+            >
+              {isDark ? <Sun className="w-4 h-4 text-nordic-red" /> : <Moon className="w-4 h-4" />}
+            </button>
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 text-ink-secondary hover:text-ink"
+              className="md:hidden p-1.5 text-ink-secondary hover:text-ink"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

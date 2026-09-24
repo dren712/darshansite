@@ -3,6 +3,21 @@
 @tailwind utilities;
 
 :root {
+  --rgb-paper: 249 249 246;
+  --rgb-paper-subtle: 242 242 236;
+  --rgb-paper-surface: 255 255 255;
+  --rgb-paper-elevated: 237 236 230;
+  --rgb-paper-border: 226 226 218;
+  --rgb-paper-line: 236 236 230;
+  --rgb-ink: 23 23 23;
+  --rgb-ink-secondary: 85 85 85;
+  --rgb-ink-muted: 122 122 122;
+  --rgb-ink-faint: 163 163 163;
+  --rgb-nordic-red: 139 46 46;
+  --rgb-nordic-red-hover: 115 36 36;
+  --rgb-nordic-red-faint: 251 242 242;
+  --rgb-nordic-red-border: 232 200 200;
+
   --color-paper: #F9F9F6;
   --color-paper-subtle: #F2F2EC;
   --color-paper-surface: #FFFFFF;
@@ -12,7 +27,37 @@
   --color-border: #E2E2DA;
   --color-border-subtle: #ECECE6;
   --color-nordic-red: #8B2E2E;
+  --grid-line: rgba(0, 0, 0, 0.025);
   color-scheme: light;
+}
+
+html.dark {
+  --rgb-paper: 17 17 16;
+  --rgb-paper-subtle: 25 25 23;
+  --rgb-paper-surface: 22 22 20;
+  --rgb-paper-elevated: 32 32 29;
+  --rgb-paper-border: 42 42 38;
+  --rgb-paper-line: 34 34 31;
+  --rgb-ink: 242 240 234;
+  --rgb-ink-secondary: 168 165 158;
+  --rgb-ink-muted: 122 119 112;
+  --rgb-ink-faint: 84 82 77;
+  --rgb-nordic-red: 196 81 81;
+  --rgb-nordic-red-hover: 212 101 101;
+  --rgb-nordic-red-faint: 36 21 21;
+  --rgb-nordic-red-border: 74 37 37;
+
+  --color-paper: #111110;
+  --color-paper-subtle: #191917;
+  --color-paper-surface: #161614;
+  --color-ink-primary: #F2F0EA;
+  --color-ink-secondary: #A8A59E;
+  --color-ink-muted: #7A7770;
+  --color-border: #2A2A26;
+  --color-border-subtle: #22221F;
+  --color-nordic-red: #C45151;
+  --grid-line: rgba(255, 255, 255, 0.025);
+  color-scheme: dark;
 }
 
 html {
@@ -34,8 +79,8 @@ body {
 .paper-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
 }
 
 /* Minimal architectural rule */
@@ -74,7 +119,12 @@ body {
 /* Restrained selection */
 ::selection {
   background-color: rgba(139, 46, 46, 0.15);
-  color: #171717;
+  color: var(--color-ink-primary);
+}
+
+html.dark ::selection {
+  background-color: rgba(196, 81, 81, 0.25);
+  color: #F2F0EA;
 }
 
 /* Typography utilities */

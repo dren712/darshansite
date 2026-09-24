@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -10,25 +11,25 @@ const config: Config = {
     extend: {
       colors: {
         paper: {
-          DEFAULT: "#F9F9F6",
-          subtle: "#F2F2EC",
-          surface: "#FFFFFF",
-          elevated: "#EDECE6",
-          border: "#E2E2DA",
-          line: "#ECECE6",
+          DEFAULT: "rgb(var(--rgb-paper) / <alpha-value>)",
+          subtle: "rgb(var(--rgb-paper-subtle) / <alpha-value>)",
+          surface: "rgb(var(--rgb-paper-surface) / <alpha-value>)",
+          elevated: "rgb(var(--rgb-paper-elevated) / <alpha-value>)",
+          border: "rgb(var(--rgb-paper-border) / <alpha-value>)",
+          line: "rgb(var(--rgb-paper-line) / <alpha-value>)",
         },
         ink: {
-          DEFAULT: "#171717",
-          primary: "#171717",
-          secondary: "#555555",
-          muted: "#7A7A7A",
-          faint: "#A3A3A3",
+          DEFAULT: "rgb(var(--rgb-ink) / <alpha-value>)",
+          primary: "rgb(var(--rgb-ink) / <alpha-value>)",
+          secondary: "rgb(var(--rgb-ink-secondary) / <alpha-value>)",
+          muted: "rgb(var(--rgb-ink-muted) / <alpha-value>)",
+          faint: "rgb(var(--rgb-ink-faint) / <alpha-value>)",
         },
         nordic: {
-          red: "#8B2E2E",
-          redHover: "#732424",
-          redFaint: "#FBF2F2",
-          redBorder: "#E8C8C8",
+          red: "rgb(var(--rgb-nordic-red) / <alpha-value>)",
+          redHover: "rgb(var(--rgb-nordic-red-hover) / <alpha-value>)",
+          redFaint: "rgb(var(--rgb-nordic-red-faint) / <alpha-value>)",
+          redBorder: "rgb(var(--rgb-nordic-red-border) / <alpha-value>)",
         },
       },
       fontFamily: {

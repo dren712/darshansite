@@ -20,7 +20,7 @@ export const LabSection: React.FC = () => {
             Ideas &amp; Lab Notes.
           </h2>
           <p className="text-base text-ink-secondary leading-relaxed font-sans">
-            Two high-conviction research programs exploring what happens as autonomous AI agents evolve into economic participants on decentralized networks.
+            Two active research programs exploring verifiable autonomous systems, living worlds, and decentralized cultural infrastructure.
           </p>
         </div>
 
