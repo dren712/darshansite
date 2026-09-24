@@ -9,15 +9,34 @@ export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     setIsDark(document.documentElement.classList.contains("dark"));
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleSystemChange = (e: MediaQueryListEvent) => {
+      if (!localStorage.getItem("theme")) {
+        if (e.matches) {
+          document.documentElement.classList.add("dark");
+          setIsDark(true);
+        } else {
+          document.documentElement.classList.remove("dark");
+          setIsDark(false);
+        }
+      }
+    };
+    mediaQuery.addEventListener("change", handleSystemChange);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      mediaQuery.removeEventListener("change", handleSystemChange);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -26,9 +45,13 @@ export const Navbar: React.FC = () => {
     if (next) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", "#111110");
     } else {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "light");
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", "#F9F9F6");
     }
   };
 
@@ -79,9 +102,9 @@ export const Navbar: React.FC = () => {
               onClick={toggleTheme}
               className="px-2.5 py-1.5 rounded-sm border border-paper-border bg-paper-surface hover:border-ink-muted text-ink-secondary hover:text-ink transition-colors font-mono text-[11px] flex items-center gap-1.5"
               aria-label="Toggle light and dark mode"
-              title={isDark ? "Switch to Paper Edition (Light)" : "Switch to Night Edition (Dark)"}
+              title={mounted && isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              {isDark ? (
+              {mounted && isDark ? (
                 <>
                   <Sun className="w-3.5 h-3.5 text-nordic-red" />
                   <span>Light</span>
@@ -109,8 +132,13 @@ export const Navbar: React.FC = () => {
               onClick={toggleTheme}
               className="p-1.5 rounded-sm border border-paper-border bg-paper-surface text-ink-secondary hover:text-ink transition-colors"
               aria-label="Toggle light and dark mode"
+              title={mounted && isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
             >
-              {isDark ? <Sun className="w-4 h-4 text-nordic-red" /> : <Moon className="w-4 h-4" />}
+              {mounted && isDark ? (
+                <Sun className="w-4 h-4 text-nordic-red" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
             </button>
 
             <button
@@ -137,6 +165,25 @@ export const Navbar: React.FC = () => {
               {item.label}
             </a>
           ))}
+          <div className="pt-2 border-t border-paper-line flex items-center justify-between">
+            <span className="text-ink-muted text-[11px]">Theme</span>
+            <button
+              onClick={toggleTheme}
+              className="px-2.5 py-1 rounded-sm border border-paper-border bg-paper text-ink-secondary hover:text-ink text-[11px] flex items-center gap-1.5"
+            >
+              {mounted && isDark ? (
+                <>
+                  <Sun className="w-3.5 h-3.5 text-nordic-red" />
+                  <span>Light Mode</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-3.5 h-3.5" />
+                  <span>Dark Mode</span>
+                </>
+              )}
+            </button>
+          </div>
           <div className="pt-2 border-t border-paper-border">
             <a
               href="#contact"
